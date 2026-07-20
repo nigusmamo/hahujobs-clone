@@ -1,5 +1,5 @@
 <template>
-    <nav class="bg-[url('/images/Background(2).svg')] flex space-x-4 justify-center py-4 gap-80 ">
+    <nav class="bg-white-100/80 backdrop-blure-xl flex space-x-4 justify-center py-4 gap-80  sticky top-0 z-50">
         <div>
             <img src="/images/badge.svg" alt="Hahu Jobs"" class="w-40">
             <p class="text-xs">Primary</p>
