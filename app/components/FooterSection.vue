@@ -4,7 +4,7 @@
             <div class="logo">
                 <p>Powered by</p>
 
-                <img src="/images/badge.svg" alt="Logo" class="w-[250px]">
+                <img src="/images/Hahu_footer_logo1.png" alt="Logo" class="w-[250px]">
 
                 <img src="/images/hahumoto.svg" alt="Logo" class="mt-4 w-[180px]">
                 

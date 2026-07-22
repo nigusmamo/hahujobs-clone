@@ -46,7 +46,7 @@ const blogs = [
 
         <div class="flex justify-center ">
 
-             <button class="bg-teal-600 px-3  py-2 rounded text-white font-semibold hover:bg-teal-200 hover:text-black mt-8">View all posts </button>
+             <button class="bg-gradient-to-r from-teal-800 to-teal-600  px-3  py-2 rounded text-white font-semibold hover:bg-teal-200 mt-8">View all posts </button>
 
         </div>
 
