@@ -1,12 +1,12 @@
 <template>
-    <nav class="flex  justify-between items-center py-4 px-20 sticky ">
+    <nav class="fixed top-0 flex justify-between items-center py-4 px-20 sticky "> 
         
         <div class="flex flex-col items-start">
-            <img src="/images/Hahu_footer_logo1.png" alt="Hahu Jobs" class="w-[130px]">
+            <img src="/images/Hahu_footer_logo1.png" alt="Hahu Jobs" class="w-[115px]">
             <p class="text-xs text-gray-600">Primary</p>
         </div>
 
-        <ul class="flex space-x-8 justify-center gap-6">
+        <ul class="flex space-x-8 justify-center gap-2">
             <li><NuxtLink to="/" class="hover:text-teal-600">Home</NuxtLink></li>
             <li><NuxtLink to="/about" class="hover:text-teal-600">About</NuxtLink></li>
             <li><NuxtLink to="/jobs" class="hover:text-teal-600">Jobs</NuxtLink></li>

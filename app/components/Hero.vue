@@ -1,11 +1,9 @@
 <template>
-    <section class="text-center bg-[url('/images/Background2.svg')] ">
+    <section class="text-center bg-[url('/images/Background2.svg')]">
         <div class="absolute top-0 left-0 w-full h-[40vh] -z-10 bg-gradient-to-b from-[#d7fdf6] to-transparent"></div>
-        <Navbar class="fixed absolute w-full top-0 bg-transparent backdrop-blur-md z-50"/>
+        <Navbar />
 
-        
-
-        <div class="inline-flex items-center gap-3 rounded-full border border-gray-300 bg-white px-1 py-1 shadow-sm mt-16 " >
+        <div class="inline-flex items-center gap-3 rounded-full border border-gray-300 bg-white px-1 py-1 shadow-sm mt-24 " >
             <img src="/images/badge.svg" alt="" class="h-6 w-20 border border-teal-200 rounded-full px-3 py-1 bg-teal-50" >
 
             <img src="/images/hahumoto.svg" alt="" class="h-3 px-2" >
