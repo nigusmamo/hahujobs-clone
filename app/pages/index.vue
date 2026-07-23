@@ -1,12 +1,12 @@
 <template>
-    <Hero />
-    <FeaturedJobs />
-    <CareerSectors />
-    <ServicesSection />
-    <CompanySection />
-    <AboutSection />
-    <VacancySection />
-    <StatisticsSection />
-    <BlogSection />
-    <FooterSection />
+  <Hero />
+  <FeaturedJobs />
+  <CareerSectors />
+  <ServicesSection />
+  <CompanySection />
+  <AboutSection />
+  <VacancySection />
+  <StatisticsSection />
+  <BlogSection />
+  <FooterSection />
 </template>
