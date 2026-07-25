@@ -11,18 +11,18 @@ const services = [
       "Compose your career profile with context standards and identifiers to showcase your assessed competencies in the sector of your expertise.HaHuJobs offers you a simple, clear and easy to use platform to help you stand out from the crowd of candidates.",
   },
   {
-    id: 1,
-    image: "/images/videoframe_5894.png",
+    id: 2,
+    image: "/images/videoframe_5977.png",
     title: "Job Application",
     description:
-      "HaHuJobs makes job hunting easy. Apply in seconds using your saved profile or by uploading your documents. Plus, track your progress with real-time updates so you're never left guessing.",
+      "Apply for jobs with just a few clicks, and track the progress of your applications through notifications on multiple platforms. Revolutionize your job applications with pre-prepared application materials and an option to select what best fits your application.",
   },
   {
-    id: 1,
-    image: "/images/videoframe_5977.png",
+    id: 3,
+    image: "/images/videoframe_5894.png",
     title: "Vacancy Notification",
     description:
-      "HaHuJobs makes job hunting easy. Apply in seconds using your saved profile or by uploading your documents. Plus, track your progress with real-time updates so you're never left guessing.",
+      "Apply for jobs with just a few clicks, and track the progress of your applications through notifications on multiple platforms. Revolutionize your job applications with pre-prepared application materials and an option to select what best fits your application.",
   },
 ];
 </script>

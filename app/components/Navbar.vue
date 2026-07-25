@@ -12,16 +12,22 @@
     <ul class="flex space-x-8 justify-center gap-2">
       <li><NuxtLink to="/" class="hover:text-teal-600">Home</NuxtLink></li>
       <li>
-        <NuxtLink to="/about" class="hover:text-teal-600">About</NuxtLink>
+        <NuxtLink to="/#about" class="hover:text-teal-600">About</NuxtLink>
       </li>
       <li><NuxtLink to="/jobs" class="hover:text-teal-600">Jobs</NuxtLink></li>
       <li>
-        <NuxtLink to="/vacancy" class="hover:text-teal-600"
+        <NuxtLink to="/#vacancy" class="hover:text-teal-600"
           >Post Vacancy</NuxtLink
         >
       </li>
       <li>
-        <NuxtLink to="/contact" class="hover:text-teal-600">Contact</NuxtLink>
+        <a
+          href="https://www.hahujobs.io/contact"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Contact
+        </a>
       </li>
     </ul>
 

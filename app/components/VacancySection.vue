@@ -22,7 +22,7 @@ const vacancies = [
 </script>
 
 <template>
-  <section class="bg-gray-50 py-20 mb-16">
+  <section id="vacancy" class="bg-gray-50 py-20 mb-16">
     <div class="mx-auto max-w-7xl px-8">
       <div class="mx-auto max-w-3xl text-center">
         <h1 class="text-5xl font-extrabold text-gray-900">Post Vacancy</h1>
@@ -47,8 +47,8 @@ const vacancies = [
             :description="vacancy.description"
           />
 
-          <div class="flex flex-col items-center justify-center text-center">
-            <h2 class="text-xs font-black text-gray-900">
+          <div class="flex flex-col items-center justify-center text-center w-80">
+            <h2 class="text-[16px] font-black text-gray-900">
               Sign up to HaHu Jobs Enterprise
             </h2>
 

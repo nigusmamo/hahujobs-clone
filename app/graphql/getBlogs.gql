@@ -1,0 +1,8 @@
+query GetBlogs {
+  cached_blogs {
+    id
+    title
+    summary
+    thumbnail
+  }
+}

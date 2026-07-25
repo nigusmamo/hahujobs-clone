@@ -1,41 +1,7 @@
 <script setup>
-const companies = [
-  {
-    id: 1,
-    title: "Save the Children",
-    image: "/images/plan.jpg",
-  },
-  {
-    id: 2,
-    title: "Collaborate | Innovate | Deliver",
-    image: "/images/eec.png",
-  },
-  {
-    id: 3,
-    title: "Dashn International",
-    image: "/images/dashn.jpg",
-  },
-  {
-    id: 4,
-    title: "Ethiopian Engineering",
-    image: "/images/rescue.png",
-  },
-  {
-    id: 5,
-    title: "Kerchanshe",
-    image: "/images/kerchanse.png",
-  },
-  {
-    id: 6,
-    title: "Mercy Crops",
-    image: "/images/hahu.webp",
-  },
-  {
-    id: 7,
-    title: "Beaeka General",
-    image: "/images/beakena.png",
-  },
-];
+import Cached_top_companies from "../graphql/cachedTopCompanies.gql";
+
+const { data } = await useAsyncQuery(Cached_top_companies);
 </script>
 
 <template>
@@ -50,8 +16,8 @@ const companies = [
 
     <div class="relative mt-4">
       <NuxtMarquee :speed="60" pause-on-hover>
-        <div v-for="company in companies" :key="company.id" class="mx-8">
-          <CompanyCard :title="company.title" :image="company.image" />
+        <div v-for="company in data.entities" :key="company.id" class="mx-8">
+          <CompanyCard :name="company.name" :logo="company.logo" />
         </div>
       </NuxtMarquee>
 

@@ -38,6 +38,3 @@ const statistics = [
     </div>
   </section>
 </template>
-
-<!-- -->
-<!-- bg-[url('/images/Layer-2.svg')] -->

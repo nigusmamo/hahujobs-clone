@@ -1,10 +1,8 @@
 <script setup>
 defineProps({
   title: String,
-  description: String,
-  image: String,
-  postDate: String,
-  postFrom: String,
+  summary: String,
+  thumbnail: String,
 });
 </script>
 
@@ -12,7 +10,7 @@ defineProps({
   <div
     class="mt-8 w-[400px] overflow-hidden rounded-2xl border border-gray-200 bg-white hover:border-teal-600 hover:shadow-lg"
   >
-    <img :src="image" :alt="title" class="h-[340px] w-full object-cover" />
+    <img :src="thumbnail" :alt="title" class="h-[340px] w-full object-cover" />
 
     <div class="p-6">
       <div class="mb-4 flex items-center gap-3">
@@ -24,11 +22,11 @@ defineProps({
           {{ postFrom }}
         </span>
       </div>
-      <h2 class="mb-3 line-clamp-2 text-3xl font-bold text-gray-900">
+      <h2 class="mb-3 line-clamp-1 text-2xl font-bold text-gray-900">
         {{ title }}
       </h2>
 
-      <p class="line-clamp-3 text-gray-600">{{ description }}</p>
+      <p class="line-clamp-3 text-gray-600">{{ summary }}</p>
 
       <button
         class="mt-6 font-semibold text-teal-600 transition hover:text-teal-700"

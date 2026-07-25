@@ -7,5 +7,14 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "vue3-carousel-nuxt",
     "nuxt-marquee",
+    "@nuxtjs/apollo",
   ],
+
+  apollo: {
+    clients: {
+      default: {
+        httpEndpoint: "https://graph.aggregator.hahu.jobs/v1/graphql",
+      },
+    },
+  },
 });

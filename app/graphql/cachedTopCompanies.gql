@@ -1,0 +1,7 @@
+query Cached_top_companies {
+  entities: cached_top_companies {
+    id
+    name
+    logo
+  }
+}

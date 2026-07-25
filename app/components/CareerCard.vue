@@ -1,8 +1,8 @@
 <script setup>
 defineProps({
-  icon: String,
+  icon_class: String,
   title: String,
-  positions: Number,
+  count: Number,
 });
 </script>
 
@@ -13,9 +13,9 @@ defineProps({
     <div
       class="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100"
     >
-      <img :src="icon" :alt="title" class="w-10 h-10" />
+      <img :src="icon_class" :alt="title" class="w-10 h-10" />
     </div>
-    <h5 class="font-semibold">{{ title }}</h5>
-    <p class="text-gray-500 mt-2 text-sm">{{ positions }} open Positions</p>
+    <h5 class="font-semibold max-w-32">{{ title }}</h5>
+    <p class="text-gray-500 mt-2 text-sm">{{ count }} open Positions</p>
   </div>
 </template>

@@ -1,110 +1,24 @@
 <script setup>
+import CachedSectors from "../graphql/cachedSectors.gql";
+import { sectorIconMapper } from "../utils/sectorIconMapper.ts";
 const router = useRouter();
 
 function closeModal() {
   router.push("/");
 }
 
-const sectors = [
-  {
-    id: 1,
-    title: "Natural Science",
-    description:
-      "Plan, implement and coordinate livelihood and agriculture components of the project with specific focus on crop production, livestock production, Income Generating activities in the farm and off-farm sectors and cash assistance programming",
-    icon: "/images/natural-science.svg",
-  },
-  {
-    id: 2,
-    title: "Business",
-    description:
-      "Plan, implement and coordinate livelihood and agriculture components of the project with specific focus on crop production, livestock production, Income Generating activities in the farm and off-farm sectors and cash assistance programming",
-    icon: "/images/business.svg",
-  },
-  {
-    id: 3,
-    title: "Creative Arts",
-    description:
-      "Plan, implement and coordinate livelihood and agriculture components of the project with specific focus on crop production, livestock production, Income Generating activities in the farm and off-farm sectors and cash assistance programming",
-    icon: "/images/creative-art.svg",
-  },
-  {
-    id: 4,
-    title: "Education",
-    description:
-      "Plan, implement and coordinate livelihood and agriculture components of the project with specific focus on crop production, livestock production, Income Generating activities in the farm and off-farm sectors and cash assistance programming",
-    icon: "/images/education.svg",
-  },
-  {
-    id: 5,
-    title: "Hospitality",
-    description:
-      "Plan, implement and coordinate livelihood and agriculture components of the project with specific focus on crop production, livestock production, Income Generating activities in the farm and off-farm sectors and cash assistance programming",
-    icon: "/images/hospitality.svg",
-  },
-  {
-    id: 6,
-    title: "Low and Medium Skill Workers",
-    description:
-      "Plan, implement and coordinate livelihood and agriculture components of the project with specific focus on crop production, livestock production, Income Generating activities in the farm and off-farm sectors and cash assistance programming",
-    icon: "/images/low-and-medium-skilled-work.svg",
-  },
-  {
-    id: 7,
-    title: "Transporation",
-    description:
-      "Plan, implement and coordinate livelihood and agriculture components of the project with specific focus on crop production, livestock production, Income Generating activities in the farm and off-farm sectors and cash assistance programming",
-    icon: "/images/transport-and-logistics.svg",
-  },
-  {
-    id: 8,
-    title: "Engineering",
-    description:
-      "Plan, implement and coordinate livelihood and agriculture components of the project with specific focus on crop production, livestock production, Income Generating activities in the farm and off-farm sectors and cash assistance programming",
-    icon: "/images/engineering.svg",
-  },
-  {
-    id: 9,
-    title: "Finance",
-    description:
-      "Plan, implement and coordinate livelihood and agriculture components of the project with specific focus on crop production, livestock production, Income Generating activities in the farm and off-farm sectors and cash assistance programming",
-    icon: "/images/health-care.svg",
-  },
-  {
-    id: 10,
-    title: "Legal Service",
-    description:
-      "Plan, implement and coordinate livelihood and agriculture components of the project with specific focus on crop production, livestock production, Income Generating activities in the farm and off-farm sectors and cash assistance programming",
-    icon: "/images/engineering.svg",
-  },
-  {
-    id: 11,
-    title: "ICt",
-    description:
-      "Plan, implement and coordinate livelihood and agriculture components of the project with specific focus on crop production, livestock production, Income Generating activities in the farm and off-farm sectors and cash assistance programming",
-    icon: "/images/engineering.svg",
-  },
-  {
-    id: 12,
-    title: "Health Care",
-    description:
-      "Plan, implement and coordinate livelihood and agriculture components of the project with specific focus on crop production, livestock production, Income Generating activities in the farm and off-farm sectors and cash assistance programming",
-    icon: "/images/engineering.svg",
-  },
-  {
-    id: 13,
-    title: "Manufacturing",
-    description:
-      "Plan, implement and coordinate livelihood and agriculture components of the project with specific focus on crop production, livestock production, Income Generating activities in the farm and off-farm sectors and cash assistance programming",
-    icon: "/images/engineering.svg",
-  },
-  {
-    id: 14,
-    title: "Social Scince",
-    description:
-      "Plan, implement and coordinate livelihood and agriculture components of the project with specific focus on crop production, livestock production, Income Generating activities in the farm and off-farm sectors and cash assistance programming",
-    icon: "/images/engineering.svg",
-  },
-];
+const { data } = await useAsyncQuery(CachedSectors);
+
+const sectors = computed(() => {
+  return data.value.cached_sectors.map((sector) => ({
+    id: sector.id,
+    title: sector.name,
+    icon_class: `https://www.hahu.jobs/images/sectors_big/${sectorIconMapper[sector.icon_class]}`,
+    count: sector.active_jobs.count,
+    description: sector.description,
+  }));
+});
+
 </script>
 
 <template>
@@ -129,11 +43,11 @@ const sectors = [
     <div class="grid grid-cols-4 gap-2 px-8">
       <JobSectorCard
         v-for="sector in sectors"
-        :icon="sector.icon"
+        :icon="sector.icon_class"
         :title="sector.title"
+        :count="sector.count"
         :description="sector.description"
       />
-
       <div class="col-start-4 row-start-3 row-span-2 w-80 h-64">
         <img src="/images/Bot1.svg" alt="Bot" class="" />
 

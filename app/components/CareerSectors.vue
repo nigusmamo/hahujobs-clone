@@ -1,90 +1,18 @@
 <script setup>
-const sectors = [
-  {
-    id: 1,
-    title: "Natural Science",
-    positions: 340,
-    icon: "/images/natural-science.svg",
-  },
-  {
-    id: 2,
-    title: "Business",
-    positions: 340,
-    icon: "/images/business.svg",
-  },
-  {
-    id: 3,
-    title: "Creative Arts",
-    positions: 340,
-    icon: "/images/creative-art.svg",
-  },
-  {
-    id: 4,
-    title: "Education",
-    positions: 340,
-    icon: "/images/education.svg",
-  },
-  {
-    id: 5,
-    title: "Hospitality",
-    positions: 340,
-    icon: "/images/hospitality.svg",
-  },
-  {
-    id: 6,
-    title: "Low and Medium Skill Workers",
-    positions: 340,
-    icon: "/images/low-and-medium-skilled-work.svg",
-  },
-  {
-    id: 7,
-    title: "Transporation",
-    positions: 340,
-    icon: "/images/transport-and-logistics.svg",
-  },
-  {
-    id: 8,
-    title: "Engineering",
-    positions: 340,
-    icon: "/images/engineering.svg",
-  },
-  {
-    id: 9,
-    title: "Finance",
-    positions: 340,
-    icon: "/images/health-care.svg",
-  },
-  {
-    id: 10,
-    title: "Legal Service",
-    positions: 340,
-    icon: "/images/engineering.svg",
-  },
-  {
-    id: 11,
-    title: "ICt",
-    positions: 340,
-    icon: "/images/engineering.svg",
-  },
-  {
-    id: 12,
-    title: "Health Care",
-    positions: 340,
-    icon: "/images/engineering.svg",
-  },
-  {
-    id: 13,
-    title: "Manufacturing",
-    positions: 340,
-    icon: "/images/engineering.svg",
-  },
-  {
-    id: 14,
-    title: "Social Scince",
-    positions: 340,
-    icon: "/images/engineering.svg",
-  },
-];
+import CachedSectors from "../graphql/cachedSectors.gql";
+import { sectorIconMapper } from "../utils/sectorIconMapper.ts";
+
+const { data, error } = await useAsyncQuery(CachedSectors);
+console.log(data.value.cached_sectors.slice(1));
+
+const sectors = computed(() => {
+  return data.value.cached_sectors.map((sector) => ({
+    id: sector.id,
+    title: sector.name,
+    icon_class: `https://www.hahu.jobs/images/sectors_big/${sectorIconMapper[sector.icon_class]}`,
+    count: sector.active_jobs.count,
+  }));
+});
 </script>
 <template>
   <section class="mt-8 pb-8 bg-gray-50 py-10">
@@ -101,8 +29,8 @@ const sectors = [
         v-for="sector in sectors"
         :key="sector.id"
         :title="sector.title"
-        :icon="sector.icon"
-        :positions="sector.positions"
+        :count="sector.count"
+        :icon_class="sector.icon_class"
       />
     </div>
   </section>

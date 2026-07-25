@@ -1,0 +1,16 @@
+query Cached_futured_jobs {
+  cached_jobs {
+    id
+    deadline
+    title
+    total_view_count
+    summary
+    location
+
+    entity {
+      id
+      name
+      logo
+    }
+  }
+}

@@ -1,0 +1,17 @@
+export const sectorIconMapper: Record<string, string> = {
+  microscope: "natural-science.svg",
+  "business-time": "business.svg",
+  palette: "creative-art.svg",
+  "graduation-cap": "education.svg",
+  hotel: "hospitality.svg",
+  tools: "low-and-medium-skilled-work.svg",
+  "plane-departure": "transport-and-logistics.svg",
+  cogs: "engineering.svg",
+  "money-check-alt": "finance.svg",
+  "balance-scale": "legal-service.svg",
+  "laptop-code": "ict.svg",
+  "hospital-alt": "health-care.svg",
+  industry: "manufacturing.svg",
+  "project-diagram": "social-science.svg",
+  history: "social-science.svg",
+};

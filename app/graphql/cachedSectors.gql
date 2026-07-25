@@ -1,0 +1,11 @@
+query CachedSectors {
+  cached_sectors {
+    id
+    name
+    description
+    active_jobs {
+      count
+    }
+    icon_class
+  }
+}

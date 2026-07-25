@@ -19,7 +19,7 @@ const features = [
 </script>
 
 <template>
-  <section class="py-10">
+  <section id="about" class="py-10">
     <div class="flex gap-24 px-4">
       <div class="px-14 py-14 ml-16">
         <h1 class="text-5xl font-extrabold">Why Choose Us</h1>
