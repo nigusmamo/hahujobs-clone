@@ -2,16 +2,18 @@
 import CachedSectors from "../graphql/cachedSectors.gql";
 import { sectorIconMapper } from "../utils/sectorIconMapper.ts";
 
-const { data, error } = await useAsyncQuery(CachedSectors);
+const { data } = await useAsyncQuery(CachedSectors);
 console.log(data.value.cached_sectors.slice(1));
 
 const sectors = computed(() => {
-  return data.value.cached_sectors.map((sector) => ({
-    id: sector.id,
-    title: sector.name,
-    icon_class: `https://www.hahu.jobs/images/sectors_big/${sectorIconMapper[sector.icon_class]}`,
-    count: sector.active_jobs.count,
-  }));
+  return data.value.cached_sectors
+    .filter((sector) => sector.active_jobs.count > 0)
+    .map((sector) => ({
+      id: sector.id,
+      title: sector.name,
+      icon_class: `https://www.hahu.jobs/images/sectors_big/${sectorIconMapper[sector.icon_class]}`,
+      count: sector.active_jobs.count,
+    }));
 });
 </script>
 <template>

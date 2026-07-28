@@ -4,10 +4,11 @@ defineProps({
   title: String,
   count: String,
   description: String,
+  sectorId: String,
 });
 </script>
 <template>
-  <NuxtLink to="/jobspage">
+  <NuxtLink :to="`/jobspage?sector=${sectorId}`">
     <div
       class="w-94 h-32 bg-[#f1f1f1] rounded flex items-center pl-4 gap-4 hover:bg-teal-50"
     >

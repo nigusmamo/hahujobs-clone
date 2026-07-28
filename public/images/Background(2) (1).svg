@@ -1,0 +1,25 @@
+<svg width="1440" height="1044" viewBox="0 0 1440 1044" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g opacity="0.2">
+<mask id="mask0_9700_1629" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1439" height="566">
+<rect width="1439" height="565.883" fill="url(#paint0_radial_9700_1629)"/>
+</mask>
+<g mask="url(#mask0_9700_1629)">
+<rect width="2167" height="1701.68" transform="translate(-363.5 -284.96)" fill="url(#pattern0_9700_1629)"/>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_9700_1629" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(719.5 -5.87927e-05) rotate(90) scale(493.189 738.759)">
+<stop stop-color="white"/>
+<stop offset="0.991144" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<pattern id="pattern0_9700_1629" patternUnits="userSpaceOnUse" patternTransform="matrix(63.3605 0 0 105.622 -5.29632 -8.49206)" preserveAspectRatio="none" viewBox="-4.12936 -6.62096 49.4 82.35" width="1" height="1">
+<use xlink:href="#pattern0_9700_1629_inner" transform="translate(-24.7 -41.175)"/>
+<use xlink:href="#pattern0_9700_1629_inner" transform="translate(0 -82.35)"/>
+<use xlink:href="#pattern0_9700_1629_inner" transform="translate(24.7 -41.175)"/>
+<use xlink:href="#pattern0_9700_1629_inner" transform="translate(-24.7 41.175)"/>
+<g id="pattern0_9700_1629_inner">
+<path d="M19.0952 8.34679e-07L38 30.5297L19.0952 61L6.11557e-08 30.4901L19.0952 8.34679e-07Z" stroke="#B4B9BF" stroke-width="7"/>
+</g>
+<use xlink:href="#pattern0_9700_1629_inner" transform="translate(24.7 41.175)"/>
+</pattern></defs>
+</svg>

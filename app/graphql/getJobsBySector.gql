@@ -1,0 +1,56 @@
+query GetSectorJobs($sectorId: String!, $limit: Int, $offset: Int) {
+  jobs: search_jobs(
+    where: {
+      _and: [
+        { sub_sector: { sector: { id: { _eq: $sectorId } } } }
+        { expired: { _eq: false } }
+        { requested_to_delete: { _eq: false } }
+      ]
+    }
+
+    limit: $limit
+
+    offset: $offset
+
+    order_by: [{ priority: desc_nulls_last }, { deadline: asc }]
+  ) {
+    id
+
+    title
+
+    deadline
+
+    total_web_view_count
+
+    salary
+
+    summary
+
+    location
+
+    entity {
+      name
+      logo
+    }
+
+    job_cities {
+      city {
+        name
+        region {
+          name
+          id
+        }
+      }
+    }
+
+    sub_sector {
+      name
+      sector {
+        name
+        id
+        icon_class
+        icon_code
+      }
+    }
+  }
+}

@@ -10,15 +10,16 @@ function closeModal() {
 const { data } = await useAsyncQuery(CachedSectors);
 
 const sectors = computed(() => {
-  return data.value.cached_sectors.map((sector) => ({
-    id: sector.id,
-    title: sector.name,
-    icon_class: `https://www.hahu.jobs/images/sectors_big/${sectorIconMapper[sector.icon_class]}`,
-    count: sector.active_jobs.count,
-    description: sector.description,
-  }));
+  return data.value.cached_sectors
+    .filter((sector) => sector.active_jobs.count > 0)
+    .map((sector) => ({
+      id: sector.id,
+      title: sector.name,
+      icon_class: `https://www.hahu.jobs/images/sectors_big/${sectorIconMapper[sector.icon_class]}`,
+      count: sector.active_jobs.count,
+      description: sector.description,
+    }));
 });
-
 </script>
 
 <template>
@@ -40,13 +41,14 @@ const sectors = computed(() => {
       </button>
     </div>
 
-    <div class="grid grid-cols-4 gap-2 px-8">
+    <div class="grid grid-cols-4 gap-2 px-8 grid-flow-col">
       <JobSectorCard
         v-for="sector in sectors"
         :icon="sector.icon_class"
         :title="sector.title"
         :count="sector.count"
         :description="sector.description"
+        :sectorId="sector.id"
       />
       <div class="col-start-4 row-start-3 row-span-2 w-80 h-64">
         <img src="/images/Bot1.svg" alt="Bot" class="" />

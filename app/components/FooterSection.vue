@@ -1,5 +1,5 @@
 <template>
-  <section class="mt-32 bg-[url('/images/Mask-group.svg')]">
+  <section class="mt-20 bg-[url('/images/Mask-group.svg')]">
     <div class="flex justify-between items-center mt-8 px-20 py-10">
       <div class="logo">
         <p>Powered by</p>

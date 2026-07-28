@@ -1,6 +1,6 @@
 <script setup>
 import "vue3-carousel/carousel.css";
-import { Carousel, Slide, Pagination } from "vue3-carousel"; 
+import { Carousel, Slide } from "vue3-carousel";
 
 import GetBlogs from "../graphql/getBlogs.gql";
 
@@ -9,7 +9,6 @@ const { data } = await useAsyncQuery(GetBlogs);
 onMounted(() => {
   console.log("Browser data:", data.value.cached_blogs);
 });
-
 </script>
 <template>
   <section class="bg-white mt-20">

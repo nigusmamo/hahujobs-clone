@@ -8,7 +8,7 @@ defineProps({
 
 <template>
   <div
-    class="flex-col group bg-gray-100 w-[380px] h-[580px] rounded-xl hover:bg-teal-50"
+    class="flex-col group bg-gray-100 w-[380px] h-[580px] rounded-xl hover:bg-[#E6F5F3]"
   >
     <div class="py-2 px-6">
       <img :src="image" :alt="title" class="rounded-xl" />

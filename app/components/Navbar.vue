@@ -1,5 +1,7 @@
 <template>
-  <nav class="fixed top-0 flex justify-between items-center py-4 px-20 sticky">
+  <nav
+    class="fixed top-0 flex justify-between items-center h-20 py-4 px-20 sticky"
+  >
     <div class="flex flex-col items-start">
       <img
         src="/images/Hahu_footer_logo1.png"

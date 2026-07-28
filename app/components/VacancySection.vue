@@ -47,7 +47,9 @@ const vacancies = [
             :description="vacancy.description"
           />
 
-          <div class="flex flex-col items-center justify-center text-center w-80">
+          <div
+            class="flex flex-col items-center justify-center text-center w-80"
+          >
             <h2 class="text-[16px] font-black text-gray-900">
               Sign up to HaHu Jobs Enterprise
             </h2>
