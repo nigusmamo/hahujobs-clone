@@ -14,12 +14,12 @@ defineProps({
 
     <div class="p-6">
       <div class="mb-4 flex items-center gap-3">
-        <span class="text-sm text-gray-500"> {{ postDate }} </span>
+        <span class="text-sm text-gray-500"> {{  }} </span>
 
         <span
           class="rounded-full bg-teal-50 px-3 py-1 text-xs font-medium text-teal-700"
         >
-          {{ postFrom }}
+          {{  }}
         </span>
       </div>
       <h2 class="mb-3 line-clamp-1 text-2xl font-bold text-gray-900">

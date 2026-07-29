@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="fixed top-0 flex justify-between items-center h-20 py-4 px-20 sticky"
+    class="fixed top-0 flex justify-between items-center w-screen h-20 py-4 px-20 z-[9999] backdrop-blur-md"
   >
     <div class="flex flex-col items-start">
       <img

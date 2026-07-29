@@ -1,4 +1,5 @@
 <template>
+  <Navbar />
   <Hero />
   <FeaturedJobs />
   <CareerSectors />

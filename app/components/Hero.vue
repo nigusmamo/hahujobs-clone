@@ -3,7 +3,6 @@
     <div
       class="absolute top-0 left-0 w-full h-[40vh] -z-10 bg-gradient-to-b from-[#d7fdf6] to-transparent"
     ></div>
-    <Navbar />
 
     <div
       class="inline-flex items-center gap-3 rounded-full border border-gray-300 bg-white px-1 py-1 shadow-sm mt-24"
