@@ -1,0 +1,52 @@
+query singleJob($id: String!) {
+  job(id: $id) {
+    title
+
+    total_view_count
+    job_fields_of_study {
+      field_of_study {
+        name
+      }
+    }
+
+    job_skills {
+      skill {
+        name
+      }
+    }
+
+    sub_sector {
+      id
+      name
+      sector {
+        id
+        name
+      }
+    }
+
+    job_cities {
+      city {
+        name
+        region {
+          id
+          name
+        }
+      }
+    }
+    location
+    number_of_applicants
+    salary
+    summary
+    deadline
+    created_at
+    description
+    how_to_apply
+    source
+    approved_on
+    area {
+      address
+      name
+    }
+   
+  }
+}

@@ -1,25 +1,46 @@
 <script setup>
-import GetSectorJobs from "../graphql/getJobsBySector.gql";
-const route = useRoute();
+import GetSectorJobs from "../graphql/getJobsBySector.gql"
+import sector from "../graphql/getSector.gql"
 
-const sectorId = route.query.sector;
+const route = useRoute()
+const router = useRouter()
 
-const { data } = await useAsyncQuery(GetSectorJobs, {
-  sectorId,
+function handleRegionClick(regionId) {
+  router.push({
+    query: {
+      ...route.query,
+      region: regionId,
+    },
+  });
+}
+
+const sectorId = computed(() => route.query.sector)
+const regionId = computed(() => route.query.region)
+
+
+const { data: sectorData } = await useAsyncQuery(sector, {
+    id: sectorId.value
+})
+
+
+const { data: jobsData } = await useAsyncQuery(GetSectorJobs, {
+  sectorId: sectorId.value ,
+  // regionId: regionId.value,
   limit: 54,
   offset: 0,
-});
+})
+
 </script>
 
 <template>
-  <section>
-    <Navbar class="bg-gray-100 z-10" />
+  <section class="">
+    <Navbar class="bg-gray-200 z-10" />
 
     <main class="flex bg-gray-200">
-      <SideBar />
+      <SideBar @region-clicked="handleRegionClick" :selectedRegion="regionId" />
 
       <section class="flex-1 bg-gray-200">
-        <div class="flex gap-2 backdrop-blur-md px-2 py-4 z-10 sticky top-20">
+        <div class="flex gap-2 backdrop-blur-md px-2 py-4 z-10 sticky top-20 font-sm">
           <input
             type="text"
             placeholder="Search"
@@ -44,25 +65,28 @@ const { data } = await useAsyncQuery(GetSectorJobs, {
 
         <div class="flex bg-white rounded-xl px-2 py-4 gap-2 mr-4">
           <div class="w-4 h-4">
-            <img src="/images/natural-science.png" alt="" />
+            <img src="/images/natural-science.png" alt="Logo"/>
           </div>
           <div class="">
-            <h2 class="font-bold">Natural Science Jobs</h2>
+            <h2 class="font-extrabold text-gray-600 text-[17px]">{{ sectorData.sector.name }} <span>jobs</span></h2>
             <p class="text-[10px]">
-              Natural science concerned with the description, prediction, and
-              understanding of natural phenomena, based on empirical evidence
-              from observation and experimentation. The major natural science
-              studies are Chemistry, astronomy, Earth science, physics, and
-              biology.
+              {{ sectorData.sector.description }}
             </p>
           </div>
         </div>
 
         <div class="mt-2 text-xl font-bold text-gray-600">
-          Showing 31 of 31 post
+          Showing <span>{{ sectorData.sector.active_jobs.count }}</span> of <span>{{ sectorData.sector.active_jobs.count }}</span> post
         </div>
-        <div class="flex flex-wrap mt-4 gap-4 mb-16">
-          <JobPageCard v-for="job in data.jobs" :key="job.id" :job="job" />
+        <div  v-if="jobsData.jobs.length > 0" class="flex flex-wrap mt-4 gap-4 mb-16">
+          <JobPageCard v-for="job in jobsData.jobs" :key="job.id" :job="job" />
+        </div>
+
+        <div v-else class="flex flex-col items-center">
+            <img src="/images/search-not-found.svg" alt="" class="w-96 h-96">
+
+            <h2 class="font-black text-2xl text-gray-600">Sorry, we couldn’t find any match for your search</h2>
+
         </div>
       </section>
     </main>

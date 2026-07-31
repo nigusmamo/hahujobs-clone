@@ -1,8 +1,8 @@
 <script setup>
-import CachedSectors from "../graphql/cachedSectors.gql"
-import { sectorIconMapper } from "../utils/sectorIconMapper.ts"
+import CachedSectors from "../graphql/cachedSectors.gql";
+import { sectorIconMapper } from "../utils/sectorIconMapper.ts";
 
-const { data } = await useAsyncQuery(CachedSectors)
+const { data } = await useAsyncQuery(CachedSectors);
 
 const sectors = computed(() => {
   return data.value.cached_sectors

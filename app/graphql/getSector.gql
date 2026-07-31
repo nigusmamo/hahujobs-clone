@@ -1,0 +1,11 @@
+query sector($id: String!) {
+  sector: basic_sectors_by_pk(id: $id) {
+    id
+    name
+    iconName: icon_class
+    description
+    active_jobs {
+        count
+    }
+  }
+}
