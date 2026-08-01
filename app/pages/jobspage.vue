@@ -1,9 +1,9 @@
 <script setup>
-import GetSectorJobs from "../graphql/getJobsBySector.gql"
-import sector from "../graphql/getSector.gql"
+import GetSectorJobs from "../graphql/getJobsBySector.gql";
+import sector from "../graphql/getSector.gql";
 
-const route = useRoute()
-const router = useRouter()
+const route = useRoute();
+const router = useRouter();
 
 function handleRegionClick(regionId) {
   router.push({
@@ -14,33 +14,82 @@ function handleRegionClick(regionId) {
   });
 }
 
-const sectorId = computed(() => route.query.sector)
-const regionId = computed(() => route.query.region)
-
+const sectorId = computed(() => route.query.sector);
+const regionId = computed(() => route.query.region);
 
 const { data: sectorData } = await useAsyncQuery(sector, {
-    id: sectorId.value
-})
+  id: sectorId.value,
+});
 
+const where = computed(() => {
+  const filters = [
+    {
+      expired: {
+        _eq: false,
+      },
+    },
 
-const { data: jobsData } = await useAsyncQuery(GetSectorJobs, {
-  sectorId: sectorId.value ,
-  // regionId: regionId.value,
-  limit: 54,
-  offset: 0,
-})
+    {
+      requested_to_delete: {
+        _eq: false,
+      },
+    },
+  ];
 
+  if (sectorId.value) {
+    filters.push({
+      sub_sector: {
+        sector: {
+          id: {
+            _eq: sectorId.value,
+          },
+        },
+      },
+    });
+  }
+
+  if (regionId.value) {
+    filters.push({
+      job_cities: {
+        city: {
+          region_id: {
+            _eq: regionId.value,
+          },
+        },
+      },
+    });
+  }
+
+  return {
+    _and: filters,
+  };
+});
+
+console.log(where.value);
+
+console.log(JSON.stringify(where.value, 2));
+
+const { data: jobsData } = await useAsyncQuery(
+  GetSectorJobs,
+  computed(() => ({
+    where: where.value,
+    limit: 54,
+    offset: 0,
+  })),
+);
 </script>
 
 <template>
-  <section class="">
-    <Navbar class="bg-gray-200 z-10" />
+  <section>
+    <Navbar class="z-10" />
 
     <main class="flex bg-gray-200">
       <SideBar @region-clicked="handleRegionClick" :selectedRegion="regionId" />
 
-      <section class="flex-1 bg-gray-200">
-        <div class="flex gap-2 backdrop-blur-md px-2 py-4 z-10 sticky top-20 font-sm">
+      <section class="flex-1 bg-[url('/images/Background2.svg')]">
+        <div
+          class="flex gap-2 backdrop-blur-md px-2 py-4 z-10 sticky top-20 font-sm"
+        >
           <input
             type="text"
             placeholder="Search"
@@ -65,10 +114,12 @@ const { data: jobsData } = await useAsyncQuery(GetSectorJobs, {
 
         <div class="flex bg-white rounded-xl px-2 py-4 gap-2 mr-4">
           <div class="w-4 h-4">
-            <img src="/images/natural-science.png" alt="Logo"/>
+            <img src="/images/natural-science.png" alt="Logo" />
           </div>
           <div class="">
-            <h2 class="font-extrabold text-gray-600 text-[17px]">{{ sectorData.sector.name }} <span>jobs</span></h2>
+            <h2 class="font-extrabold text-gray-600 text-[17px]">
+              {{ sectorData.sector.name }} <span>jobs</span>
+            </h2>
             <p class="text-[10px]">
               {{ sectorData.sector.description }}
             </p>
@@ -76,17 +127,22 @@ const { data: jobsData } = await useAsyncQuery(GetSectorJobs, {
         </div>
 
         <div class="mt-2 text-xl font-bold text-gray-600">
-          Showing <span>{{ sectorData.sector.active_jobs.count }}</span> of <span>{{ sectorData.sector.active_jobs.count }}</span> post
+          Showing <span>{{ sectorData.sector.active_jobs.count }}</span> of
+          <span>{{ sectorData.sector.active_jobs.count }}</span> post
         </div>
-        <div  v-if="jobsData.jobs.length > 0" class="flex flex-wrap mt-4 gap-4 mb-16">
+        <div
+          v-if="jobsData.jobs.length > 0"
+          class="flex flex-wrap mt-4 gap-4 mb-16"
+        >
           <JobPageCard v-for="job in jobsData.jobs" :key="job.id" :job="job" />
         </div>
 
         <div v-else class="flex flex-col items-center">
-            <img src="/images/search-not-found.svg" alt="" class="w-96 h-96">
+          <img src="/images/search-not-found.svg" alt="" class="w-96 h-96" />
 
-            <h2 class="font-black text-2xl text-gray-600">Sorry, we couldn’t find any match for your search</h2>
-
+          <h2 class="font-black text-2xl text-gray-600">
+            Sorry, we couldn’t find any match for your search
+          </h2>
         </div>
       </section>
     </main>

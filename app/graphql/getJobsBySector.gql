@@ -1,38 +1,6 @@
-query GetSectorJobs($sectorId: String!, $regionId: String, $limit: Int, $offset: Int) {
+query GetSectorJobs($where: jobs_bool_exp, $limit: Int, $offset: Int) {
   jobs: search_jobs(
-    where: {
-      _and: [
-        { sub_sector: {
-            sector: {
-                id: {
-                    _eq: $sectorId
-                }
-            }
-        }}
-
-        # {
-        #     job_cities: {
-        #         city: {
-        #             region_id: {
-        #                 _eq: $regionId
-        #             }
-        #         }
-        #     }
-        # }
-        
-        {
-            expired: {
-                _eq: false
-            }
-        }
-
-        {
-            requested_to_delete: {
-                _eq: false
-            }
-        }
-      ]
-    }
+    where: $where
 
     limit: $limit
 

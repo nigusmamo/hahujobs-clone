@@ -14,18 +14,20 @@ function forwardRegion(regionId) {
     <div class="ml-12 mt-10">
       <div class="flex flex-col items-center">
         <div class="flex items-center gap-4">
-            <Icon name="lucide:sliders"/>
-            <h1 class="text-[18px] font-extrabold text-gray-600 mr-4">  Additional Filters</h1>
-            <button><Icon name="heroicons:chevron-up" class="text-xl text-teal-600"/></button>
+          <Icon name="lucide:sliders" />
+          <h1 class="text-[18px] font-extrabold text-gray-600 mr-4">
+            Additional Filters
+          </h1>
+          <button>
+            <Icon name="heroicons:chevron-up" class="text-xl text-teal-600" />
+          </button>
         </div>
         <input
           type="range"
           min="0"
           max="10"
-          class="mt-12 accent-[#009688] h-2 w-64 "
+          class="mt-12 accent-[#009688] h-2 w-64"
         />
-
-        
       </div>
       <div class="flex justify-center gap-4 mr-4 text-sm text-gray-600 mt-4">
         <p>0-3 years of experience</p>

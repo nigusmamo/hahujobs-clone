@@ -15,6 +15,22 @@ query singleJob($id: String!) {
       }
     }
 
+    entity {
+      id
+      name
+      logo
+      capacity
+      phone_number
+      email
+      woreda_town {
+        subcity_zone {
+          region_city {
+            name
+          }
+        }
+      }
+    }
+
     sub_sector {
       id
       name
@@ -47,6 +63,5 @@ query singleJob($id: String!) {
       address
       name
     }
-   
   }
 }

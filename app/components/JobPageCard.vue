@@ -8,7 +8,7 @@ const { job } = defineProps({
 </script>
 
 <template>
-    <NuxtLink :to="`/jobspage${job.id}`">
+    <NuxtLink :to="`/jobdetails/${job.id}`">
         <div
             class="container w-[435px] min-h-[500px] bg-white rounded-xl border hover:border-teal-600 py-6"
         >

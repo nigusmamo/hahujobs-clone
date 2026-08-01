@@ -5,7 +5,7 @@ query sector($id: String!) {
     iconName: icon_class
     description
     active_jobs {
-        count
+      count
     }
   }
 }

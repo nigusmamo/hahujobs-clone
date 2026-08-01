@@ -4,13 +4,13 @@ const props = defineProps({
 });
 
 const isSelected = (rId) => {
-  return props.selectedRegion === rId
-}
+  return props.selectedRegion === rId;
+};
 
-const emit = defineEmits("region-clicked")
+const emit = defineEmits("region-clicked");
 
 function handleRegionClick(regionId) {
-  emit("region-clicked", regionId)
+  emit("region-clicked", regionId);
 }
 </script>
 
