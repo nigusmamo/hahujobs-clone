@@ -14,8 +14,19 @@ function handleRegionClick(regionId) {
   });
 }
 
+function handleTypeClicked(type) {
+  router.push({
+    query: {
+      ...route.query,
+      type: type
+    }
+  })
+}
+
+
 const sectorId = computed(() => route.query.sector);
 const regionId = computed(() => route.query.region);
+const type = computed(()=> route.query.type)
 
 const { data: sectorData } = await useAsyncQuery(sector, {
   id: sectorId.value,
@@ -60,14 +71,18 @@ const where = computed(() => {
     });
   }
 
+  if(type.value) {
+    filters.push({
+      type: {
+        _eq: type.value
+      }
+    })
+  }
+
   return {
     _and: filters,
   };
 });
-
-console.log(where.value);
-
-console.log(JSON.stringify(where.value, 2));
 
 const { data: jobsData } = await useAsyncQuery(
   GetSectorJobs,
@@ -76,7 +91,7 @@ const { data: jobsData } = await useAsyncQuery(
     limit: 54,
     offset: 0,
   })),
-);
+)
 </script>
 
 <template>
@@ -84,7 +99,7 @@ const { data: jobsData } = await useAsyncQuery(
     <Navbar class="z-10" />
 
     <main class="flex bg-gray-200">
-      <SideBar @region-clicked="handleRegionClick" :selectedRegion="regionId" />
+      <SideBar @region-clicked="handleRegionClick" @type-clicked="handleTypeClicked" :selectedRegion="regionId" />
 
       <section class="flex-1 bg-[url('/images/Background2.svg')]">
         <div

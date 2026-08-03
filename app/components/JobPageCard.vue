@@ -1,16 +1,19 @@
 <script setup>
+// import jobTypeMapper from "../utils/jobTypeMapper.ts"
 const { job } = defineProps({
   job: {
     type: Object,
     required: true,
   },
-});
+})
+
+
 </script>
 
 <template>
     <NuxtLink :to="`/jobdetails/${job.id}`">
         <div
-            class="container w-[435px] min-h-[500px] bg-white rounded-xl border hover:border-teal-600 py-6"
+            class="container w-[435px] min-h-[550px] bg-white rounded-xl border hover:border-teal-600 py-6"
         >
             <div class="flex justify-between  px-4">
             <p class="text-red-400 text-xs">
@@ -69,12 +72,25 @@ const { job } = defineProps({
             </div>
             </div>
 
-            <div
+           <div class="flex items-center gap-2">
+             <button
             class="flex justify-center items-center border w-[110px] rounded-xl ml-8 mt-4 bg-teal-600 text-white gap-2 text-xs py-1"
             >
             <Icon name="mdi:account-clock" class="w-4 h-4" />
-            Full Time
+           {{ jobTypeMapper[job.type] }}
+            </button>
+
+            <div v-if="job.salary > 0" class="bg-teal-600 text-white text-xs flex items-center px-4 py-1 rounded-xl gap-1 mt-4 flex-wrap">
+                <Icon name="cryptocurrency:usd" class="w-4 h-4"/>
+                <span>Birr </span>
+                <div>
+                    {{ job.salary }}
+                    <span>/Month</span>
+                </div>
             </div>
+           </div>
+
+            
 
             <hr class="mt-4" />
 

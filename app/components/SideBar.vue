@@ -3,7 +3,16 @@ defineProps({
   selectedRegion: String,
 });
 
-const emit = defineEmits("region-clicked");
+const emit = defineEmits([
+  'region-clicked',
+  'type-clicked'
+
+])
+
+function handleTypeClicked(type) {
+  emit('type-clicked', type)
+
+}
 function forwardRegion(regionId) {
   emit("region-clicked", regionId);
 }
@@ -46,31 +55,36 @@ function forwardRegion(regionId) {
       <h2 class="mt-8 font-bold">Type</h2>
 
       <div class="flex flex-wrap gap-2 mt-4 text-gray-600 mr-8">
-        <div
+        <button
           class="bg-gray-200 px-2 flex justify-center rounded-xl border border-[0.5px] border-[#009688] hover:bg-[#C3DFDD]"
+          @click="handleTypeClicked('bid')"
         >
           Bid +
-        </div>
-        <div
+        </button>
+        <button
           class="bg-gray-200 px-2 flex justify-center rounded-xl border border-[0.5px] border-[#009688] hover:bg-[#C3DFDD]"
+          @click="handleTypeClicked('contract')"
         >
           Contract +
-        </div>
-        <div
+        </button>
+        <button
           class="bg-gray-200 px-2 flex justify-center rounded-xl border border-[0.5px] border-[#009688] hover:bg-[#C3DFDD]"
+          @click="handleTypeClicked('full_time')"
         >
           Full Time +
-        </div>
-        <div
+        </button>
+        <button
           class="bg-gray-200 px-2 flex justify-center rounded-xl border border-[0.5px] border-[#009688] hover:bg-[#C3DFDD]"
+          @click="handleTypeClicked('internship')"
         >
           Internship +
-        </div>
-        <div
+        </button>
+        <button
           class="bg-gray-200 px-2 flex justify-center rounded-xl border border-[0.5px] border-[#009688] hover:bg-[#C3DFDD]"
+          @click="handleTypeClicked('part_time')"
         >
           Part Time +
-        </div>
+        </button>
       </div>
 
       <hr class="border-t border-gray-300 my-6" />

@@ -12,6 +12,10 @@ query GetSectorJobs($where: jobs_bool_exp, $limit: Int, $offset: Int) {
 
     title
 
+    type
+
+    salary
+
     deadline
 
     total_web_view_count
